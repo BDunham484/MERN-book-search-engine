@@ -4,17 +4,22 @@ import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap
 import { getMe, deleteBook } from '../utils/API';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
-import { useQuery } from '@apollo/client';
-import { GET_ME } from '../utils/queries';
+// import { useQuery } from '@apollo/client';
+// import { GET_ME } from '../utils/queries';
 
 const SavedBooks = () => {
   const [userData, setUserData] = useState({});
+   //use object destructuring to extract `data` from the 'useQuery' hook's response and rename it 'userData' to be more descriptive
+  //use useQuery hook to make query request
+  // const { data: userData } = useQuery(GET_ME);
 
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
 
-  //use useQuery hook to make query request
-  const { loading, data } = useQuery(GET_ME);
+
+  // const loggedIn = Auth.loggedIn();
+
+  
 
   useEffect(() => {
     const getUserData = async () => {
