@@ -22,10 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-  // if we're in production, serve client/build as static assets
-  if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/build')));
-  }
+
 
 
 //create a new instance of an Apollo server with the GraphQL schema
@@ -34,7 +31,10 @@ const startApolloServer = async (typeDefs, resolvers) => {
   //integrate our Apollo server with the Express app as middleware
   server.applyMiddleware({ app });
 
-
+  // if we're in production, serve client/build as static assets
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
 
 app.use(routes);
 
