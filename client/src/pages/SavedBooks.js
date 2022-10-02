@@ -9,16 +9,16 @@ import { REMOVE_BOOK } from '../utils/mutations';
 const SavedBooks = () => {
   //use useQuery hook to make query request
   const { loading, data } = useQuery(GET_ME);
-  
+  //use optional chaining to assign value to userData
   const userData = data?.me || {};
   console.log(userData);
-  
+  //prepare useMutation hook
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
-    
+
     if (!token) {
       return false;
     }

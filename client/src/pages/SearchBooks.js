@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
-
 import Auth from '../utils/auth';
 import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
-
 import { useMutation } from '@apollo/client';
 import { SAVE_BOOK } from '../utils/mutations';
 
@@ -13,10 +11,9 @@ const SearchBooks = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
-
   // create state to hold saved bookId values
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
-
+  //prepare useMutation hook to call SAVE_BOOK mutation
   const [saveBook, { error }] = useMutation(SAVE_BOOK);
 
   // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
@@ -61,7 +58,6 @@ const SearchBooks = () => {
   const handleSaveBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
-
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -70,9 +66,6 @@ const SearchBooks = () => {
     }
 
     try {
-      //below is origin api source code
-      // const response = await saveBook(bookToSave, token);
-      console.log(bookToSave);
       const { data } = await saveBook(
         { variables: { ...bookToSave }
       }, token);
