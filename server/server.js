@@ -9,7 +9,7 @@ const routes = require('./routes');
 const { authMiddleware } = require('./utils/auth');
 
 
-const app = express();
+
 const PORT = process.env.PORT || 3001;
 //create a new Apollo server and pass in our schema data
 const server = new ApolloServer({
@@ -18,9 +18,17 @@ const server = new ApolloServer({
   context: authMiddleware
 });
 
+const app = express();
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+  // if we're in production, serve client/build as static assets
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+  }
+  
+  app.use(routes);
 
 
 
@@ -31,12 +39,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
   //integrate our Apollo server with the Express app as middleware
   server.applyMiddleware({ app });
 
-  // if we're in production, serve client/build as static assets
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-}
 
-app.use(routes);
 
   db.once('open', () => {
     app.listen(PORT, () => {
