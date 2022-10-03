@@ -30,16 +30,11 @@ app.use(express.json());
   
   app.use(routes);
 
-
-
-
 //create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
   //integrate our Apollo server with the Express app as middleware
   server.applyMiddleware({ app });
-
-
 
   db.once('open', () => {
     app.listen(PORT, () => {
