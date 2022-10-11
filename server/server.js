@@ -8,8 +8,6 @@ const db = require('./config/connection');
 const routes = require('./routes');
 const { authMiddleware } = require('./utils/auth');
 
-
-
 const PORT = process.env.PORT || 3001;
 //create a new Apollo server and pass in our schema data
 const server = new ApolloServer({
@@ -22,8 +20,6 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-
 
 //create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
