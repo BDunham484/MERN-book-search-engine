@@ -1,4 +1,4 @@
-<h1 align="center">MERN-Book-Search-Engine</h1>
+<h1 align="center">📚🔎MERN-Book-Search-Engine📚🔎</h1>
 
 <br>
 
