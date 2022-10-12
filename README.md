@@ -1,4 +1,6 @@
-<h1 align="center">MERN-Book-Search-Engine </h1>
+<h1 align="center">MERN-Book-Search-Engine</h1>
+
+<br>
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=plastic&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=plastic&logo=css3&logoColor=white)
@@ -17,6 +19,8 @@
 ![JWT](https://img.shields.io/badge/JWT-black?style=plastic&logo=JSON%20web%20tokens)
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?logo=bootstrap&logoColor=white&style=plastic)
 
+<br>
+
 <hr>
 
 
@@ -28,8 +32,10 @@ Deployed to Heroku <a href="https://obscure-plains-26619.herokuapp.com/">here!</
 
 <hr>
 
-## Description:
+## Description
+
 <hr>
+
 I took a fully functioning Google Books API search engine built with a RESTful API, and refactored it to be a GraphQL API built with Apollo Server.  The app was built using the MERN stack, with a React front end, MongoDB database, and Node.js/Express.js server and API. The steps I took to complete the challenge were:
 
 1. Set up an Apollo Server to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API. 
@@ -41,15 +47,23 @@ I took a fully functioning Google Books API search engine built with a RESTful A
 4. Deploy the application to Heroku.
 
 ## Local Development
+
 <hr>  
-* Run `npm init -y` from the command line
+
+* Run `npm init -y` from the command line<br>
 * Run `npm i` to install dependencies
 
 
 ## Usage
+
 <hr>
-* Run `npm run develop` to build the app locally in a development environment
+
+* Run `npm run develop` to build the app locally
+
+<br>
 
 ### Made with ❤️ by  Brad Dunham
+
+<br>
 
 Back to [top of page](# )
